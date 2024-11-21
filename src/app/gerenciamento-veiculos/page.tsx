@@ -42,7 +42,7 @@ export default function GerencVeiculos() {
                     <p><strong>Tipo de Motor:</strong> {vehicle.tipoMotor}</p>
                     <button
                         onClick={() => setEditingVehicle(vehicle)}
-                        className="mr-2 text-blue-500"
+                        className="mr-2 text-orange-400"
                     >
                         Editar
                     </button>

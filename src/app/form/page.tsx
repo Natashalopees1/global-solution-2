@@ -194,11 +194,11 @@ import React, { useState, useEffect } from 'react';
             className="mr-2"
           />
           <label htmlFor="concordaTermos" className="text-gray-500 text-sm">
-            Concordo com os <a href="#" className="text-blue-500 underline">Termos de Uso</a>
+            Concordo com os <a href="#" className="text-orange-400 underline">Termos de Uso</a>
           </label>
         </div>
   
-        <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold p-3 rounded-md mt-4">
+        <button type="submit" className="w-full bg-orange-400 hover:bg-orange-300 text-white font-semibold p-3 rounded-md mt-4">
           {vehicle ? 'Atualizar Veículo' : 'Cadastrar Veículo'}
         </button>
         {vehicle && (

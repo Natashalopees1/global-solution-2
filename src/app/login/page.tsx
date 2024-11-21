@@ -24,7 +24,7 @@ export default function Login() {
                 <div className="flex justify-center items-center min-h-screen">
                     <div className="bg-white p-8 rounded-xl shadow-lg max-w-md w-full">
                         <button
-                            className="text-blue-900 flex items-center mb-4"
+                            className="text-orange-400 flex items-center mb-4"
                         >
                             <FiArrowLeft className="mr-2" />
                             <Link href={'/'}>Voltar</Link>
@@ -41,7 +41,7 @@ export default function Login() {
                                 placeholder='Email'
                                 required
                                 autoComplete="email"
-                                className="w-full p-4 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-900"
+                                className="w-full p-4 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
                             />
                             <input
                                 {...register('password')}
@@ -50,11 +50,11 @@ export default function Login() {
                                 type="password"
                                 placeholder='Senha'
                                 required
-                                className="w-full p-4 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-900"
+                                className="w-full p-4 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
                             />
                             <button
                                 type="submit"
-                                className="w-full flex items-center justify-center p-4 bg-blue-900 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none"
+                                className="w-full flex items-center justify-center p-4 bg-orange-400 text-white font-semibold rounded-lg hover:bg-orange-400 focus:outline-none"
                             >
                                 Cadastrar
                                 <FiArrowRight className="ml-2" />
@@ -62,7 +62,7 @@ export default function Login() {
                         </form>
 
                         <p className="text-center text-gray-500 mt-6">
-                            Não tem conta? <Link href={'/register'}><span className='text-blue-500'>Cadastre-se aqui!</span></Link>
+                            Não tem conta? <Link href={'/register'}><span className='text-orange-300'>Cadastre-se aqui!</span></Link>
                         </p>
                     </div>
                 </div>

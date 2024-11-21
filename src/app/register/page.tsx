@@ -27,7 +27,7 @@ export default function Register() {
             <div className="flex justify-center items-center min-h-screen">
                 <div className="bg-white p-8 rounded-xl shadow-lg max-w-md w-full">
                     <button
-                        className="text-blue-900 flex items-center mb-4"
+                        className="text-orange-400 flex items-center mb-4"
                     >
                         <FiArrowLeft className="mr-2" />
                         <Link href={'/'}>Voltar</Link>
@@ -44,7 +44,7 @@ export default function Register() {
                             placeholder='Nome'
                             required
                             autoComplete="name"
-                            className="w-full p-4 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-900"
+                            className="w-full p-4 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
                         />
                         <input
                             {...register('email')}
@@ -54,7 +54,7 @@ export default function Register() {
                             placeholder='Email'
                             required
                             autoComplete="email"
-                            className="w-full p-4 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-900"
+                            className="w-full p-4 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
                         />
                         <input
                             {...register('password')}
@@ -63,11 +63,11 @@ export default function Register() {
                             type="password"
                             placeholder='Senha'
                             required
-                            className="w-full p-4 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-900"
+                            className="w-full p-4 border border-gray-300 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
                         />
                         <button
                             type="submit"
-                            className="w-full flex items-center justify-center p-4 bg-blue-900 text-white font-semibold rounded-lg hover:bg-blue-900 focus:outline-none"
+                            className="w-full flex items-center justify-center p-4 bg-orange-400 text-white font-semibold rounded-lg hover:bg-orange-400 focus:outline-none"
                         >
                             Realizar Cadastro
                             <FiArrowRight className="ml-2" />
@@ -75,7 +75,7 @@ export default function Register() {
                     </form>
 
                     <p className="text-center text-gray-500 mt-6">
-                        Já tem conta? <Link href={'/login'}><span className='text-blue-900'>Faça Login</span></Link>
+                        Já tem conta? <Link href={'/login'}><span className='text-orange-400'>Faça Login</span></Link>
                     </p>
                 </div>
             </div>

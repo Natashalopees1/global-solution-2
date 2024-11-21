@@ -21,7 +21,7 @@ export default function Header() {
         <div className="absolute col-span-2 md:col-span-2 xs:static">
           <Image
             src={logo}
-            alt="Logo autocheckup"
+            alt="Logo SolarDrive"
             className="h-auto"
             width={200}
             height={500}
@@ -30,15 +30,12 @@ export default function Header() {
         <div className="hidden md:flex md:col-span-6 justify-between font-semibold">
           <ul className="flex space-x-8">
             <li
-              className="cursor-pointer border-b-3 border-transparent hover:border-blue-900"
+              className="cursor-pointer border-b-3 border-transparent hover:border-orange-400"
             >
              <Link href={'/'}>Home</Link>
             </li>
-            <li className="cursor-pointer border-b-3 border-transparent hover:border-blue-900">
-              Diagnostico
-            </li>
             <li
-              className="cursor-pointer border-b-3 border-transparent hover:border-blue-900"
+              className="cursor-pointer border-b-3 border-transparent hover:border-orange-400"
             >
              <Link href={'/membros'}>Participantes</Link>
             </li>
@@ -46,7 +43,7 @@ export default function Header() {
         </div>
         <div className="hidden md:flex md:col-span-4 justify-end">
           <button
-            className="w-40 h-10 border border-blue-900 rounded-full text-blue-900 hover:bg-blue-900 hover:text-white transition duration-300"
+            className="w-40 h-10 border border-orange-400 rounded-full text-orange-400 hover:bg-orange-400 hover:text-white transition duration-300"
           >
             <Link href={'/login'}>Àrea do Cliente</Link>
           </button>
@@ -68,9 +65,6 @@ export default function Header() {
             >
               <Link href={'/'}>Home</Link>
             </li>
-            <li className="cursor-pointer">
-              <Link href={'/login'}>Diagnostico</Link>
-            </li>
             <li
               className="cursor-pointer"
             >
@@ -78,7 +72,7 @@ export default function Header() {
             </li>
             <li className="cursor-pointer">
               <button
-                className="w-40 h-10 border border-blue-900 rounded-full text-blue-900 hover:bg-blue-900 hover:text-white transition duration-300"
+                className="w-40 h-10 border border-orange-400 rounded-full text-orange-400 hover:bg-orange-400 hover:text-white transition duration-300"
               >
                 <Link href={'/login'}>Àrea do Cliente</Link>
               </button>

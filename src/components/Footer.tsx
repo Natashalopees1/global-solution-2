@@ -15,23 +15,23 @@ import googleIcon from '@/image/footer/btn-google.png'
 const Footer = () => {
   const footerData = {
     itemsInst: [
-      { item: "A Porto" },
-      { item: "Marca Porto" },
-      { item: "Instituto Porto" },
+      { item: "A Solar Drive" },
+      { item: "Política de privacidade" },
+      { item: "Trabalhe conosco" },
       { item: "Parceiros" },
-      { item: "Teatro Porto" },
+      { item: "Regulamentos" },
       { item: "Notícias e Imprensa" },
       { item: "Patrocínios" },
     ],
-    itemsBlog: [
-      { item: "Casa" },
+    itemsAjuda: [
+      { item: "Troca e devolução" },
       { item: "Mobilidade" },
-      { item: "Finanças" },
-      { item: "Vida e Saúde" },
+      { item: "Entregas" },
+      { item: "Meus pedidos" },
       { item: "Viagem" },
       { item: "Tecnologia" },
       { item: "Negócios" },
-      { item: "Sobre a Porto" },
+      { item: "Sobre a Solar Drive" },
     ],
     itemsForYou: [
       { item: "Portal do Cliente" },
@@ -46,13 +46,13 @@ const Footer = () => {
       { src: tiktokIcon, alt: "Ícone do TikTok" },
     ],
     dowload: [
-      { src: appleIcon, alt: "Baixar app da Porto na Apple Store" },
-      { src: googleIcon, alt: "Baixar app da Porto na Google Play" },
+      { src: appleIcon, alt: "Baixar app da Solar Drive na Apple Store" },
+      { src: googleIcon, alt: "Baixar app da Solar Drive na Google Play" },
     ],
   };
 
   return (
-    <div className="bg-blue-900 text-white py-6 min-h-[400px] flex flex-col">
+    <div className="bg-orange-400 text-white py-6 min-h-[400px] flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center p-6">
         
         <div className="flex flex-col">
@@ -63,14 +63,14 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col">
-          <ul className="font-bold">Blog Porto</ul>
-          {footerData.itemsBlog.map((itemObj, i) => (
+          <ul className="font-bold">Blog Solar Drive</ul>
+          {footerData.itemsAjuda.map((itemObj, i) => (
             <li key={i} className="font-normal">{itemObj.item}</li>
           ))}
         </div>
 
         <div className="flex flex-col">
-          <ul className="font-bold">Porto e Você</ul>
+          <ul className="font-bold">Solar Drive e Você</ul>
           {footerData.itemsForYou.map((itemObj, i) => (
             <li key={i} className="font-normal">{itemObj.item}</li>
           ))}
@@ -78,14 +78,14 @@ const Footer = () => {
 
         <div className="flex flex-col items-center">
           <Image src={logo} alt="Logo AutoCheckup" className="mb-4" />
-          <p>Acompanhe a Porto nas redes sociais</p>
+          <p>Acompanhe a Solar Drive nas redes sociais</p>
           <div className="flex space-x-4 mt-2">
             {footerData.iconsSocial.map((itemObj) => (
               <Image key={itemObj.alt} src={itemObj.src} alt={itemObj.alt} />
             ))}
           </div>
           <div className="mt-8">
-            <p>Baixe o app da Porto</p>
+            <p>Baixe o app da Solar Drive</p>
             <div className="flex space-x-4">
               {footerData.dowload.map((itemObj) => (
                 <Image key={itemObj.alt} src={itemObj.src} alt={itemObj.alt} className="cursor-pointer" />

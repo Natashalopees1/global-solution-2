@@ -53,7 +53,7 @@ export default function Dashboard() {
         <div className="container mx-auto p-4">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-blue-900">Olá {user?.name}, bem vindo(a) de volta!</h1>
+                    <h1 className="text-3xl font-bold text-orange-400">Olá {user?.name}, bem vindo(a) de volta!</h1>
                     <p className="text-gray-500 mt-2">
                         Seja parte da nossa empresa e resolva seus problemas do seu celular
                     </p>
@@ -67,21 +67,21 @@ export default function Dashboard() {
                                 className="p-6 bg-white border rounded-lg shadow-lg flex flex-col items-center hover:shadow-xl transition-shadow"
                             >
                                 <Image src={card.imgSrc} alt={card.title} width={200} height={200} className="w-45 h-45 mb-4" quality={100}/>
-                                <h2 className="text-lg font-semibold text-blue-900 mb-2 text-center">{card.title}</h2>
+                                <h2 className="text-lg font-semibold text-orange-400 mb-2 text-center">{card.title}</h2>
                                 <p className="text-gray-500 text-center">{card.description}</p>
                             </div>
                         </Link>
                     ))}
                 </div>
             </div>
-            <div className="mt-8 bg-blue-800 text-white p-6 rounded-lg flex items-center">
+            <div className="mt-8 bg-orange-400 text-white p-6 rounded-lg flex items-center">
                 <div className="flex-1">
                     <h2 className="text-xl font-bold">Seja um assegurado Porto</h2>
                     <p className="text-white mt-2">
                         Seja um assegurador e garanta qualidade e agilidade no seu dia a dia.
                     </p>
                 </div>
-                <button className="bg-white text-blue-800 px-4 py-2 font-bold rounded-lg ml-4">
+                <button className="bg-white text-orange-400 px-4 py-2 font-bold rounded-lg ml-4">
                     Ver detalhes
                 </button>
             </div>
