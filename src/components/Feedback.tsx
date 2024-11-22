@@ -1,3 +1,4 @@
+"use client";
 import Image from 'next/image';
 import icon1 from '@/image/home/person.png'
 

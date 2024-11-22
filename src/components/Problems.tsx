@@ -1,5 +1,7 @@
+"use client";
 import Image from 'next/image';
 import React from 'react';
+
 
 import car from '@/image/home/problems-car.png'
 import timer from '@/image/home/timer.png'
