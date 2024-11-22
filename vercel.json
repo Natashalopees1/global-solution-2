@@ -1,0 +1,17 @@
+{
+    "builds": [
+      {
+        "src": "src/app/form/page.tsx",
+        "use": "@vercel/next"
+      }
+    ],
+    "env": {
+      "TS_NODE_PROJECT": "./tsconfig.json"
+    },
+    "build": {
+      "env": {
+        "TS_NODE_TRANSPILE_ONLY": "true"
+      }
+    }
+  }
+  
