@@ -1,5 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
+  type Vehicle = {
+    placa: string;
+    possuiPlaca: boolean;
+    marca: string;
+    capacidadeDaBateria: string;
+    nivelBateria: string;
+    tipoMotor: string;
+    transmissao: string;
+    cor: string;
+    quilometragem: string;
+    desconheceQuilometragem: boolean;
+    manutencaoRecente: string;
+    semManutencaoRecente: boolean;
+    observacoes: string;
+    concordaTermos: boolean;
+  };
+
   type VehicleFormProps = {
     vehicle?: Vehicle;
     onSave: (vehicle: Vehicle) => void;
@@ -15,6 +32,8 @@ import React, { useState, useEffect } from 'react';
             placa: '',
             possuiPlaca: false,
             marca: '',
+            capacidadeDaBateria: '',
+            nivelBateria: '',
             tipoMotor: '',
             transmissao: '',
             cor: '',
@@ -52,6 +71,8 @@ import React, { useState, useEffect } from 'react';
         placa: '',
         possuiPlaca: false,
         marca: '',
+        capacidadeDaBateria: '',
+        nivelBateria: '',
         tipoMotor: '',
         transmissao: '',
         cor: '',
@@ -105,6 +126,28 @@ import React, { useState, useEffect } from 'react';
             type="text"
             name="tipoMotor"
             value={vehicleData.tipoMotor}
+            onChange={handleChange}
+            className="w-full border rounded-md p-2 mt-1"
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-700">Capacidade da bateria *</label>
+          <input
+            type="text"
+            name="capacidadeDaBateria"
+            value={vehicleData.capacidadeDaBateria}
+            onChange={handleChange}
+            className="w-full border rounded-md p-2 mt-1"
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-700">Nível da bateria *</label>
+          <input
+            type="text"
+            name="nivelBateria"
+            value={vehicleData.nivelBateria}
             onChange={handleChange}
             className="w-full border rounded-md p-2 mt-1"
           />

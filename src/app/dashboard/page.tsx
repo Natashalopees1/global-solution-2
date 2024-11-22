@@ -16,14 +16,14 @@ import card3 from '@/image/dashboard/key.png'
 
 const cards = [
     {
-        title: "Fazer diagnóstico",
+        title: "Fazer cotação",
         description: "Resolva seu problema conosco.",
         imgSrc: card1,
         link: '/chatbot'
     },
     {
-        title: "Consultar diagnósticos",
-        description: "Reveja seus problemas conosco.",
+        title: "Consultar bateria solar",
+        description: "Consulte sua bateria conosco.",
         imgSrc: card2,
         link: '/chatbot'
     },
@@ -76,7 +76,7 @@ export default function Dashboard() {
             </div>
             <div className="mt-8 bg-orange-400 text-white p-6 rounded-lg flex items-center">
                 <div className="flex-1">
-                    <h2 className="text-xl font-bold">Seja um assegurado Porto</h2>
+                    <h2 className="text-xl font-bold">Seja um assegurado Solar Drive</h2>
                     <p className="text-white mt-2">
                         Seja um assegurador e garanta qualidade e agilidade no seu dia a dia.
                     </p>

@@ -1,4 +1,5 @@
 type Vehicle = {
+    capacidadeDaBateria: string | number | readonly string[] | undefined;
     id?: number | any;
     placa: string;
     possuiPlaca: boolean;

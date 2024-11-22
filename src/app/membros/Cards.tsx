@@ -26,7 +26,7 @@ export default function Cards(){
         <section className="text-center px-8 py-12">
         <h2 className="text-2xl font-bold text-orange-400">Participantes</h2>
         <p className="text-orange-300 mt-2 max-w-xl mx-auto">
-          Empressarios da For Wheels
+          Empressarios da Solar Drive
         </p>
         <div className="flex justify-center gap-8 mt-8">
           {participants.map((participant) => (
