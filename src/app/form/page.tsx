@@ -1,266 +1,68 @@
-"use client";
-import { useEffect, useState } from "react";
+"use client"
+import React, { useState, useEffect } from 'react';
+import Form from './form'
 
-// Definição do tipo Vehicle
-type Vehicle = {
-  placa: string;
-  possuiPlaca: boolean;
-  marca: string;
-  capacidadeDaBateria: string;
-  nivelBateria: string;
-  tipoMotor: string;
-  transmissao: string;
-  cor: string;
-  quilometragem: string;
-  desconheceQuilometragem: boolean;
-  manutencaoRecente: string;
-  semManutencaoRecente: boolean;
-  observacoes: string;
-  concordaTermos: boolean;
-};
 
-// Tipo para as props do formulário
- interface VehicleFormProps {
-  vehicle: Vehicle | null;
-  onSave: (vehicle: Vehicle) => void;
-  onCancel: () => void;
-};
+export default function GerencVeiculos() {
+    const [vehicles, setVehicles] = useState<Vehicle[]>([]);
+    const [editingVehicle, setEditingVehicle] = useState<Vehicle | null>(null);
 
-// Componente do formulário
-const Form = ({ vehicle, onSave, onCancel }: VehicleFormProps) => {
-  const [vehicleData, setVehicleData] = useState<Vehicle>(() => {
-    const savedData = localStorage.getItem('vehicleData');
-    return savedData
-      ? JSON.parse(savedData)
-      : {
-          placa: '',
-          possuiPlaca: false,
-          marca: '',
-          capacidadeDaBateria: '',
-          nivelBateria: '',
-          tipoMotor: '',
-          transmissao: '',
-          cor: '',
-          quilometragem: '',
-          desconheceQuilometragem: false,
-          manutencaoRecente: '',
-          semManutencaoRecente: false,
-          observacoes: '',
-          concordaTermos: false,
-        };
-  });
+    useEffect(() => {
+        fetch("/data/vehicles.json")
+            .then((response) => response.json())
+            .then((data) => setVehicles(data))
+            .catch((error) => console.error("Erro ao carregar os veículos:", error));
+    }, []);
 
-  // Salva os dados do veículo no localStorage sempre que o estado mudar
-  useEffect(() => {
-    localStorage.setItem('vehicleData', JSON.stringify(vehicleData));
-  }, [vehicleData]);
+    const handleAddVehicle = (newVehicle: Vehicle) => {
+        setVehicles([...vehicles, { ...newVehicle, id: Date.now() }]);
+    };
 
-  // Função para lidar com mudanças nos inputs
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement|any>) => {
-    const { name, value, type, checked } = e.target;
-    setVehicleData((prev) => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  };
+    const handleDeleteVehicle = (id: number) => {
+        setVehicles(vehicles.filter((vehicle) => vehicle.id !== id));
+    };
 
-  // Função para lidar com o envio do formulário
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!vehicleData.marca || !vehicleData.tipoMotor || !vehicleData.transmissao || !vehicleData.cor || !vehicleData.concordaTermos) {
-      alert('Por favor, preencha todos os campos obrigatórios e aceite os Termos de Uso.');
-      return;
-    }
-    onSave(vehicleData);
-    localStorage.removeItem('vehicleData'); // Limpa os dados depois de salvar
-    setVehicleData({
-      placa: '',
-      possuiPlaca: false,
-      marca: '',
-      capacidadeDaBateria: '',
-      nivelBateria: '',
-      tipoMotor: '',
-      transmissao: '',
-      cor: '',
-      quilometragem: '',
-      desconheceQuilometragem: false,
-      manutencaoRecente: '',
-      semManutencaoRecente: false,
-      observacoes: '',
-      concordaTermos: false,
-    });
-  };
+    const handleEditVehicle = (updatedVehicle: Vehicle) => {
+        setVehicles(
+            vehicles.map((vehicle) =>
+                vehicle.id === updatedVehicle.id ? updatedVehicle : vehicle
+            )
+        );
+        setEditingVehicle(null); // Fecha o modo de edição
+    };
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block text-gray-700">Digite a placa do veículo</label>
-        <input
-          type="text"
-          name="placa"
-          placeholder="Digite a placa do veículo"
-          value={vehicleData.placa}
-          onChange={handleChange}
-          className="w-full border rounded-md p-2 mt-1"
-        />
-        <div className="flex items-center mt-2">
-          <input
-            type="checkbox"
-            name="possuiPlaca"
-            checked={vehicleData.possuiPlaca}
-            onChange={handleChange}
-            className="mr-2"
-          />
-          <label htmlFor="possuiPlaca" className="text-gray-500 text-sm">Não sei nem possuo a placa do veículo</label>
+    return (
+        <div className="container mx-auto p-4">
+            <h1 className="text-2xl font-bold mb-4">Gerenciamento de Veículos</h1>
+
+            {vehicles.map((vehicle) => (
+                <div key={vehicle.id} className="border p-4 mb-4 rounded">
+                    <p><strong>Placa:</strong> {vehicle.placa}</p>
+                    <p><strong>Marca:</strong> {vehicle.marca}</p>
+                    <p><strong>Tipo de Motor:</strong> {vehicle.tipoMotor}</p>
+                    <button
+                        onClick={() => setEditingVehicle(vehicle)}
+                        className="mr-2 text-orange-400"
+                    >
+                        Editar
+                    </button>
+                    <button
+                        onClick={() => handleDeleteVehicle(vehicle.id!)}
+                        className="text-orange-400"
+                    >
+                        Excluir
+                    </button>
+                </div>
+            ))}
+
+            <h2 className="text-xl font-semibold mb-4">
+                {editingVehicle ? "Editar Veículo" : "Adicionar Veículo"}
+            </h2>
+            <Form
+                vehicle={editingVehicle}
+                onSave={editingVehicle ? handleEditVehicle : handleAddVehicle}
+                onCancel={() => setEditingVehicle(null)}
+            />
         </div>
-      </div>
-
-      <div>
-        <label className="block text-gray-700">Marca do veículo *</label>
-        <input
-          type="text"
-          name="marca"
-          value={vehicleData.marca}
-          onChange={handleChange}
-          className="w-full border rounded-md p-2 mt-1"
-        />
-      </div>
-
-      <div>
-        <label className="block text-gray-700">Tipo de Motor *</label>
-        <input
-          type="text"
-          name="tipoMotor"
-          value={vehicleData.tipoMotor}
-          onChange={handleChange}
-          className="w-full border rounded-md p-2 mt-1"
-        />
-      </div>
-
-      <div>
-        <label className="block text-gray-700">Capacidade da bateria *</label>
-        <input
-          type="text"
-          name="capacidadeDaBateria"
-          value={vehicleData.capacidadeDaBateria}
-          onChange={handleChange}
-          className="w-full border rounded-md p-2 mt-1"
-        />
-      </div>
-
-      <div>
-        <label className="block text-gray-700">Nível da bateria *</label>
-        <input
-          type="text"
-          name="nivelBateria"
-          value={vehicleData.nivelBateria}
-          onChange={handleChange}
-          className="w-full border rounded-md p-2 mt-1"
-        />
-      </div>
-
-      <div>
-        <label className="block text-gray-700">Transmissão *</label>
-        <input
-          type="text"
-          name="transmissao"
-          value={vehicleData.transmissao}
-          onChange={handleChange}
-          className="w-full border rounded-md p-2 mt-1"
-        />
-      </div>
-
-      <div>
-        <label className="block text-gray-700">Cor *</label>
-        <input
-          type="text"
-          name="cor"
-          value={vehicleData.cor}
-          onChange={handleChange}
-          className="w-full border rounded-md p-2 mt-1"
-        />
-      </div>
-
-      <div>
-        <label className="block text-gray-700">Quilometragem atual</label>
-        <input
-          type="text"
-          name="quilometragem"
-          value={vehicleData.quilometragem}
-          onChange={handleChange}
-          className="w-full border rounded-md p-2 mt-1"
-        />
-        <div className="flex items-center mt-2">
-          <input
-            type="checkbox"
-            name="desconheceQuilometragem"
-            checked={vehicleData.desconheceQuilometragem}
-            onChange={handleChange}
-            className="mr-2"
-          />
-          <label htmlFor="desconheceQuilometragem" className="text-gray-500 text-sm">Não sei exatamente a quilometragem</label>
-        </div>
-      </div>
-
-      <div>
-        <label className="block text-gray-700">Manutenção recente</label>
-        <input
-          type="text"
-          name="manutencaoRecente"
-          placeholder="Adicionar manutenção"
-          value={vehicleData.manutencaoRecente}
-          onChange={handleChange}
-          className="w-full border rounded-md p-2 mt-1"
-        />
-        <div className="flex items-center mt-2">
-          <input
-            type="checkbox"
-            name="semManutencaoRecente"
-            checked={vehicleData.semManutencaoRecente}
-            onChange={handleChange}
-            className="mr-2"
-          />
-          <label htmlFor="semManutencaoRecente" className="text-gray-500 text-sm">Não possui manutenções recentes</label>
-        </div>
-      </div>
-
-      <div>
-        <label className="block text-gray-700">Observações</label>
-        <textarea
-          name="observacoes"
-          value={vehicleData.observacoes}
-          onChange={handleChange}
-          className="w-full border rounded-md p-2 mt-1"
-        ></textarea>
-      </div>
-
-      <div className="flex items-center mt-4">
-        <input
-          type="checkbox"
-          name="concordaTermos"
-          checked={vehicleData.concordaTermos}
-          onChange={handleChange}
-          className="mr-2"
-        />
-        <label htmlFor="concordaTermos" className="text-gray-500 text-sm">
-          Concordo com os <a href="#" className="text-orange-400 underline">Termos de Uso</a>
-        </label>
-      </div>
-
-      <button type="submit" className="w-full bg-orange-400 hover:bg-orange-300 text-white font-semibold p-3 rounded-md mt-4">
-        {vehicle ? 'Atualizar Veículo' : 'Cadastrar Veículo'}
-      </button>
-      {vehicle && (
-        <button
-          type="button"
-          onClick={onCancel}
-          className="w-full bg-gray-500 hover:bg-gray-600 text-white font-semibold p-3 rounded-md mt-4"
-        >
-          Cancelar
-        </button>
-      )}
-    </form>
-  );
-};
-
-export default Form;
+    );
+}
