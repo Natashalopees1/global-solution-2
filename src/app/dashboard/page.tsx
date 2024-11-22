@@ -31,7 +31,7 @@ const cards = [
         title: "Meus Veículos",
         description: "Acesse seus carros.",
         imgSrc: card3,
-        link: '/gerenciamento-veiculos'
+        link: '/form'
     }
 ];
 
